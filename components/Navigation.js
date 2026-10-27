@@ -194,7 +194,7 @@ export default function Navigation() {
           <nav className="surface-panel rounded-2xl px-4 py-3 shadow-card md:px-6">
             <div className="flex items-center justify-between gap-3">
               <button aria-label="Scroll to opening" onClick={() => handleJump(items[0]?.id || "hero")} className="display-font text-base uppercase tracking-[0.28em] text-silver/90 transition hover:text-white">
-                Y.A.
+                {lang === "ru" ? "В начало" : "Top"}
               </button>
 
               <div className="hidden items-center gap-4 lg:flex">
