@@ -43,7 +43,7 @@ export default function EducationSection() {
                 {education.map((item) => (
                     <article key={`${item.period}-${item.degree}`} className="education-node relative">
                       <span className="absolute -left-[2.05rem] top-2 h-2.5 w-2.5 rounded-full bg-neon-cyan shadow-[0_0_18px_rgba(55,244,255,0.8)]" />
-                      <p className="mono-font text-[11px] uppercase tracking-[0.22em] text-neon-cyan">{item.period}</p>
+                      <p className="text-sm font-semibold uppercase tracking-wider text-neon-cyan">{item.period}</p>
                       <h3 className="display-font mt-2 text-2xl font-semibold leading-tight text-white">{item.degree}</h3>
                       <p className="mono-font mt-2 text-[10px] uppercase tracking-[0.2em] text-silver/65">{item.institution}</p>
                       <p className="mt-3 text-sm leading-relaxed text-silver/80 md:text-base">{item.focus}</p>

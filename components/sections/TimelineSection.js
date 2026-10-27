@@ -70,7 +70,7 @@ export default function TimelineSection() {
               {journey.map((step, index) => (
                   <article key={step.year} className={`timeline-card surface-panel min-h-[440px] w-[70vw] max-w-[780px] flex-shrink-0 rounded-[34px] border border-white/15 px-8 py-8 ${index === 0 ? "is-active" : ""}`}>
                     <div className="timeline-card-content space-y-5">
-                      <p className="mono-font text-xs uppercase tracking-[0.28em] text-neon-cyan">{step.year}</p>
+                      <p className="text-sm font-semibold uppercase tracking-wider text-neon-cyan">{step.year}</p>
                       <h3 className="display-font text-3xl font-semibold leading-tight text-white">{step.role}</h3>
                       <p className="mono-font text-xs uppercase tracking-[0.26em] text-silver/70">{step.company}</p>
                       <p className="max-w-xl text-lg leading-relaxed text-silver/85">{step.summary}</p>
@@ -88,7 +88,7 @@ export default function TimelineSection() {
             {journey.map((step) => (
                 <article key={step.year} className="timeline-mobile-card relative mb-8 rounded-3xl border border-white/15 bg-white/[0.05] p-6">
                   <div className="absolute -left-[34px] top-6 h-3 w-3 rounded-full bg-neon-cyan shadow-[0_0_18px_rgba(55,244,255,0.85)]" />
-                  <p className="mono-font text-xs uppercase tracking-[0.28em] text-neon-cyan">{step.year}</p>
+                  <p className="text-sm font-semibold uppercase tracking-wider text-neon-cyan">{step.year}</p>
                   <h3 className="display-font mt-3 text-2xl font-semibold leading-tight text-white">{step.role}</h3>
                   <p className="mono-font mt-2 text-[11px] uppercase tracking-[0.2em] text-silver/65">{step.company}</p>
                   <p className="mt-4 text-sm leading-relaxed text-silver/80">{step.summary}</p>

@@ -64,7 +64,7 @@ export const content = {
         year: "2020 - 2026",
         role: "Инспектор группы кадров",
         company: "Органы внутренних дел РБ",
-        summary: "Полный цикл кадрового делопроизводства (270+ сотрудников).",
+        summary: "Полный цикл кадрового делопроизводства (300+ сотрудников).",
         impact: "Ведение кадрового учета: приказы, личные дела, контракты.\nОрганизация и проведение аттестаций, исчисление стажа.\nПодготовка ответов на запросы и взаимодействие с государственными органами и иными организациями."
       }
     ],
@@ -131,12 +131,12 @@ export const content = {
       title: "Junior Java Developer",
       location: "Minsk, Belarus",
       heroKicker: "Junior Java Developer",
-      heroHeadline: "Building reliable backend systems.",
+      heroHeadline: "Building backend systems.",
       heroStatement: "Focused on Java, Spring Boot, and database architecture. Working in cybersecurity.",
       aboutHeading: "About Me",
       aboutParagraphs: [
         "I am a Junior Java Developer with a foundation in Java Core and OOP. I have hands-on experience building web applications in a team environment.",
-        "Currently, I work as a Cybersecurity Engineer at ZAO BelTim. In parallel, I am developing my skills in Java backend development and applying them to write reliable code."
+        "Currently, I work as a Cybersecurity Engineer at ZAO BelTim. In parallel, I am developing my skills in Java backend development and applying them to write code."
       ]
     },
     journey: [
@@ -151,7 +151,7 @@ export const content = {
         year: "2020 - 2026",
         role: "HR Inspector",
         company: "Ministry of Internal Affairs of RB",
-        summary: "Full cycle of HR record management (270+ employees).",
+        summary: "Full cycle of HR record management (300+ employees).",
         impact: "Maintaining HR records: orders, personal files, contracts.\nOrganizing and conducting certifications, calculating length of service.\nPreparing responses to requests and interacting with government agencies and other organizations."
       }
     ],
