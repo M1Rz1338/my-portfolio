@@ -201,8 +201,8 @@ export default function Navigation() {
               {lang === "ru" ? "Главная" : "Home"}
             </button>
 
-            <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-2 lg:flex">
-            <span className="text-[10px] uppercase tracking-[0.15em] text-silver/50">
+            <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-3 lg:flex">
+            <span className="text-xs uppercase tracking-[0.1em] text-silver/60">
               {lang === "ru" ? "Текущий раздел" : "Current section"}
             </span>
               <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-wider text-white">{activeLabel}</span>
