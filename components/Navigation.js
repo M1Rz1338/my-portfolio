@@ -196,7 +196,7 @@ export default function Navigation() {
             <button
                 aria-label="Scroll to opening"
                 onClick={() => handleJump(items[0]?.id || "hero")}
-                className="text-sm font-medium text-silver/80 transition hover:text-white"
+                className="text-xs font-medium uppercase tracking-wider text-silver/80 transition hover:text-white"
             >
               {lang === "ru" ? "Главная" : "Home"}
             </button>
