@@ -190,35 +190,38 @@ export default function Navigation() {
           <div ref={progressFillRef} className="h-full origin-left scale-x-0 bg-gradient-to-r from-neon-cyan via-neon-violet to-neon-magenta" />
         </div>
 
-        <header className="fixed left-1/2 top-4 z-[72] w-[calc(100%-1.5rem)] -translate-x-1/2 md:w-[min(1120px,93vw)]">
-          <nav className="surface-panel rounded-2xl px-4 py-3 shadow-card md:px-6">
-            <div className="flex items-center justify-between gap-3">
-              <button aria-label="Scroll to opening" onClick={() => handleJump(items[0]?.id || "hero")} className="display-font text-base uppercase tracking-[0.28em] text-silver/90 transition hover:text-white">
-                {lang === "ru" ? "В начало" : "Top"}
+        <header className="fixed left-1/2 top-4 z-[72] w-[calc(100%-1.5rem)] -translate-x-1/2 md:w-[min(900px,95vw)]">
+          <nav className="surface-panel relative flex h-14 items-center justify-between rounded-2xl px-5 shadow-card">
+
+            <button
+                aria-label="Scroll to opening"
+                onClick={() => handleJump(items[0]?.id || "hero")}
+                className="text-sm font-medium text-silver/80 transition hover:text-white"
+            >
+              {lang === "ru" ? "Главная" : "Home"}
+            </button>
+
+            <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-2 lg:flex">
+            <span className="text-[10px] uppercase tracking-[0.15em] text-silver/50">
+              {lang === "ru" ? "Текущий раздел" : "Current section"}
+            </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-wider text-white">{activeLabel}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                  onClick={toggleLanguage}
+                  className="flex h-8 items-center justify-center rounded-full border border-neon-cyan/50 bg-neon-cyan/10 px-4 text-xs font-medium uppercase tracking-wider text-neon-cyan transition-colors hover:bg-neon-cyan hover:text-black"
+              >
+                {lang === "ru" ? "EN" : "RU"}
               </button>
-
-              <div className="hidden items-center gap-4 lg:flex">
-              <span className="mono-font text-xs uppercase tracking-[0.2em] text-silver/60">
-                {lang === "ru" ? "Текущий раздел" : "Current section"}
-              </span>
-                <span className="rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-sm uppercase tracking-[0.15em] text-white">{activeLabel}</span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <button
-                    onClick={toggleLanguage}
-                    className="mono-font inline-flex h-10 items-center justify-center rounded-full border border-neon-cyan/60 bg-neon-cyan/10 px-5 text-sm font-medium tracking-widest text-neon-cyan transition-all hover:bg-neon-cyan hover:text-black"
-                >
-                  {lang === "ru" ? "EN" : "RU"}
-                </button>
-                <button
-                    aria-label="Open menu"
-                    onClick={() => { if (menuOpen) { closeSceneMap(); return; } setDisplaySceneId(activeSection); setMenuOpen(true); }}
-                    className="mono-font inline-flex h-10 items-center justify-center rounded-full border border-white/20 bg-white/5 px-5 text-sm font-medium uppercase tracking-widest text-silver/80 transition-all hover:bg-white/10 hover:text-white"
-                >
-                  {lang === "ru" ? "Разделы" : "Sections"}
-                </button>
-              </div>
+              <button
+                  aria-label="Open menu"
+                  onClick={() => { if (menuOpen) { closeSceneMap(); return; } setDisplaySceneId(activeSection); setMenuOpen(true); }}
+                  className="flex h-8 items-center justify-center rounded-full border border-white/20 bg-white/5 px-4 text-xs font-medium uppercase tracking-wider text-silver/80 transition-colors hover:bg-white/10 hover:text-white"
+              >
+                {lang === "ru" ? "Разделы" : "Sections"}
+              </button>
             </div>
           </nav>
         </header>
