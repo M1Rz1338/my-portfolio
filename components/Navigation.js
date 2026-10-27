@@ -204,11 +204,18 @@ export default function Navigation() {
                 <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-white">{activeLabel}</span>
               </div>
 
-              <div className="flex items-center gap-2">
-                <button onClick={toggleLanguage} className="mono-font rounded-full border border-neon-cyan/50 bg-neon-cyan/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.24em] text-neon-cyan transition hover:bg-neon-cyan hover:text-black">
+              <div className="flex items-center gap-3">
+                <button
+                    onClick={toggleLanguage}
+                    className="mono-font flex h-8 items-center justify-center rounded-full bg-neon-cyan px-4 text-[11px] font-bold uppercase tracking-[0.15em] text-black transition hover:bg-white"
+                >
                   {lang === "ru" ? "EN" : "RU"}
                 </button>
-                <button aria-label="Open menu" onClick={() => { if (menuOpen) { closeSceneMap(); return; } setDisplaySceneId(activeSection); setMenuOpen(true); }} className="mono-font rounded-full border border-white/25 px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-silver/80 transition hover:border-white/50 hover:text-white">
+                <button
+                    aria-label="Open menu"
+                    onClick={() => { if (menuOpen) { closeSceneMap(); return; } setDisplaySceneId(activeSection); setMenuOpen(true); }}
+                    className="mono-font flex h-8 items-center justify-center rounded-full border border-white/20 bg-white/5 px-4 text-[11px] uppercase tracking-[0.15em] text-silver/80 transition hover:bg-white/10 hover:text-white"
+                >
                   {lang === "ru" ? "Меню" : "Menu"}
                 </button>
               </div>

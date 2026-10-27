@@ -40,7 +40,7 @@ export const siteMeta = {
 export const content = {
   ru: {
     personal: {
-      name: "Ярослав Александров",
+      name: "Yaroslav Alexandrov",
       title: "Junior Java Developer",
       location: "Минск, Беларусь",
       heroKicker: "Junior Java Developer",
