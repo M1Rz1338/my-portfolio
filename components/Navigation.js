@@ -188,7 +188,7 @@ export default function Navigation() {
   return (
       <>
         <div className="fixed left-0 top-0 z-[74] h-[2px] w-full bg-white/10">
-          <div ref={progressFillRef} className="h-full origin-left scale-x-0 bg-gradient-to-r from-neon-cyan via-neon-violet to-neon-magenta" />
+          <div ref={progressFillRef} className="h-full origin-left scale-x-0 bg-neon-cyan" />
         </div>
 
         <header className="fixed left-1/2 top-4 z-[72] w-[calc(100%-1.5rem)] -translate-x-1/2 md:w-[min(900px,95vw)]">

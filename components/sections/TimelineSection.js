@@ -63,7 +63,7 @@ export default function TimelineSection() {
         <div className="hidden lg:block">
           <div ref={pinWrapRef} className="relative mx-auto mt-6 w-[min(1400px,100vw)] overflow-hidden">
             <div className="absolute left-0 top-8 z-20 h-[2px] w-full origin-left bg-white/15">
-              <div ref={progressRef} className="h-full origin-left scale-x-0 bg-gradient-to-r from-neon-cyan via-neon-violet to-neon-magenta" />
+              <div ref={progressRef} className="h-full origin-left scale-x-0 bg-neon-cyan" />
             </div>
 
             <div ref={trackRef} className="flex gap-10 px-10 pb-10 pt-16 will-change-transform">
@@ -74,7 +74,7 @@ export default function TimelineSection() {
                       <h3 className="display-font text-3xl font-semibold leading-tight text-white">{step.role}</h3>
                       <p className="mono-font text-xs uppercase tracking-[0.26em] text-silver/70">{step.company}</p>
                       <p className="max-w-xl text-lg leading-relaxed text-silver/85">{step.summary}</p>
-                      <div className="whitespace-pre-line rounded-2xl border border-neon-violet/35 bg-neon-violet/10 px-5 py-4 text-base leading-relaxed text-silver">{step.impact}</div>
+                      <div className="whitespace-pre-line rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-base leading-relaxed text-silver">{step.impact}</div>
                     </div>
                   </article>
               ))}
@@ -92,7 +92,7 @@ export default function TimelineSection() {
                   <h3 className="display-font mt-3 text-2xl font-semibold leading-tight text-white">{step.role}</h3>
                   <p className="mono-font mt-2 text-[11px] uppercase tracking-[0.2em] text-silver/65">{step.company}</p>
                   <p className="mt-4 text-sm leading-relaxed text-silver/80">{step.summary}</p>
-                  <p className="mt-4 whitespace-pre-line rounded-xl border border-neon-violet/35 bg-neon-violet/10 px-4 py-3 text-sm leading-relaxed text-silver">{step.impact}</p>
+                  <div className="mt-4 whitespace-pre-line rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm leading-relaxed text-silver">{step.impact}</div>
                 </article>
             ))}
           </div>
