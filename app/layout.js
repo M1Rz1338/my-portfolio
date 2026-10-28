@@ -2,58 +2,21 @@ import { Inter, JetBrains_Mono, Manrope, Outfit, Sora, Space_Grotesk, Space_Mono
 import { contact, personal, siteMeta } from "@/data/resumeContent";
 import themeConfig from "@/data/themeConfig.json";
 import { LanguageProvider } from "./LanguageContext";
+import GlobalBackground from "@/components/GlobalBackground";
+import SoundEngine from "@/components/SoundEngine";
 import "./globals.css";
 
-const displaySyne = Syne({
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-  variable: "--font-display-syne"
-});
-
-const displayOutfit = Outfit({
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-  variable: "--font-display-outfit"
-});
-
-const displaySpaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-display-space-grotesk"
-});
-
-const bodyManrope = Manrope({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-body-manrope"
-});
-
-const bodyInter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-body-inter"
-});
-
-const bodySora = Sora({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-body-sora"
-});
-
-const monoSpace = Space_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-mono-space"
-});
-
-const monoJetBrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-mono-jetbrains"
-});
+const displaySyne = Syne({ subsets: ["latin"], weight: ["500", "600", "700", "800"], variable: "--font-display-syne" });
+const displayOutfit = Outfit({ subsets: ["latin"], weight: ["500", "600", "700", "800"], variable: "--font-display-outfit" });
+const displaySpaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-display-space-grotesk" });
+const bodyManrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-body-manrope" });
+const bodyInter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-body-inter" });
+const bodySora = Sora({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-body-sora" });
+const monoSpace = Space_Mono({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-mono-space" });
+const monoJetBrains = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-mono-jetbrains" });
 
 export const metadata = {
-  metadataBase: new URL(siteMeta.siteUrl),
+  metadataBase: new URL("https://yaroslav-dev-ya-dev.vercel.app"),
   title: {
     default: `${personal.name} | ${siteMeta.titleSuffix}`,
     template: `%s | ${siteMeta.titleSuffix}`
@@ -61,34 +24,22 @@ export const metadata = {
   description: siteMeta.description,
   applicationName: siteMeta.titleSuffix,
   keywords: siteMeta.keywords,
-  authors: [{ name: personal.name, url: siteMeta.siteUrl }],
+  authors: [{ name: personal.name, url: "https://yaroslav-dev-ya-dev.vercel.app" }],
   creator: personal.name,
   publisher: personal.name,
   category: "technology",
-  alternates: {
-    canonical: "/"
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1
-    }
-  },
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
   openGraph: {
     type: "website",
-    url: siteMeta.siteUrl,
+    url: "https://yaroslav-dev-ya-dev.vercel.app",
     title: `${personal.name} | ${siteMeta.titleSuffix}`,
     description: siteMeta.description,
     siteName: siteMeta.titleSuffix,
     locale: siteMeta.locale,
     images: [
       {
-        url: siteMeta.ogImage,
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: `${personal.name} - ${siteMeta.titleSuffix}`
@@ -99,8 +50,7 @@ export const metadata = {
     card: "summary_large_image",
     title: `${personal.name} | ${siteMeta.titleSuffix}`,
     description: siteMeta.description,
-    images: [siteMeta.ogImage],
-    creator: siteMeta.twitterHandle
+    images: ["/og-image.jpg"]
   }
 };
 
@@ -120,22 +70,9 @@ function hexToRgbString(hex) {
   return `${r} ${g} ${b}`;
 }
 
-const displayVarMap = {
-  syne: "var(--font-display-syne)",
-  outfit: "var(--font-display-outfit)",
-  spaceGrotesk: "var(--font-display-space-grotesk)"
-};
-
-const bodyVarMap = {
-  manrope: "var(--font-body-manrope)",
-  inter: "var(--font-body-inter)",
-  sora: "var(--font-body-sora)"
-};
-
-const monoVarMap = {
-  spaceMono: "var(--font-mono-space)",
-  jetbrainsMono: "var(--font-mono-jetbrains)"
-};
+const displayVarMap = { syne: "var(--font-display-syne)", outfit: "var(--font-display-outfit)", spaceGrotesk: "var(--font-display-space-grotesk)" };
+const bodyVarMap = { manrope: "var(--font-body-manrope)", inter: "var(--font-body-inter)", sora: "var(--font-body-sora)" };
+const monoVarMap = { spaceMono: "var(--font-mono-space)", jetbrainsMono: "var(--font-mono-jetbrains)" };
 
 export default function RootLayout({ children }) {
   const email = contact.methods.find((item) => item.label.toLowerCase() === "email")?.value;
@@ -145,64 +82,30 @@ export default function RootLayout({ children }) {
   const selectedMono = monoVarMap[themeConfig.font?.mono] || monoVarMap.spaceMono;
 
   const themeVars = {
-    "--bg-0": themeConfig.base.bg0,
-    "--bg-1": themeConfig.base.bg1,
-    "--surface-a": themeConfig.base.surfaceA,
-    "--surface-b": themeConfig.base.surfaceB,
-    "--surface-a-rgb": hexToRgbString(themeConfig.base.surfaceA),
-    "--surface-b-rgb": hexToRgbString(themeConfig.base.surfaceB),
-    "--text-main": themeConfig.base.textMain,
-    "--text-soft": themeConfig.base.textSoft,
-    "--loader-bg": themeConfig.loader?.background || themeConfig.base.bg0,
-    "--loader-text": themeConfig.loader?.text || themeConfig.base.textMain,
-    "--bg-start": themeConfig.background.start,
-    "--bg-mid": themeConfig.background.mid,
-    "--bg-end": themeConfig.background.end,
-    "--violet": themeConfig.accent.violet,
-    "--cyan": themeConfig.accent.cyan,
-    "--magenta": themeConfig.accent.magenta,
-    "--amber": themeConfig.accent.amber,
-    "--violet-rgb": hexToRgbString(themeConfig.accent.violet),
-    "--cyan-rgb": hexToRgbString(themeConfig.accent.cyan),
-    "--magenta-rgb": hexToRgbString(themeConfig.accent.magenta),
-    "--amber-rgb": hexToRgbString(themeConfig.accent.amber),
-    "--font-display": selectedDisplay,
-    "--font-body": selectedBody,
-    "--font-mono": selectedMono
+    "--bg-0": themeConfig.base.bg0, "--bg-1": themeConfig.base.bg1, "--surface-a": themeConfig.base.surfaceA, "--surface-b": themeConfig.base.surfaceB,
+    "--surface-a-rgb": hexToRgbString(themeConfig.base.surfaceA), "--surface-b-rgb": hexToRgbString(themeConfig.base.surfaceB),
+    "--text-main": themeConfig.base.textMain, "--text-soft": themeConfig.base.textSoft,
+    "--loader-bg": themeConfig.loader?.background || themeConfig.base.bg0, "--loader-text": themeConfig.loader?.text || themeConfig.base.textMain,
+    "--bg-start": themeConfig.background.start, "--bg-mid": themeConfig.background.mid, "--bg-end": themeConfig.background.end,
+    "--violet": themeConfig.accent.violet, "--cyan": themeConfig.accent.cyan, "--magenta": themeConfig.accent.magenta, "--amber": themeConfig.accent.amber,
+    "--violet-rgb": hexToRgbString(themeConfig.accent.violet), "--cyan-rgb": hexToRgbString(themeConfig.accent.cyan), "--magenta-rgb": hexToRgbString(themeConfig.accent.magenta), "--amber-rgb": hexToRgbString(themeConfig.accent.amber),
+    "--font-display": selectedDisplay, "--font-body": selectedBody, "--font-mono": selectedMono
   };
 
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "WebSite",
-        name: siteMeta.titleSuffix,
-        url: siteMeta.siteUrl,
-        description: siteMeta.description,
-        inLanguage: "en"
-      },
-      {
-        "@type": "Person",
-        name: personal.name,
-        jobTitle: personal.title,
-        description: personal.heroStatement,
-        url: siteMeta.siteUrl,
-        email: email ? `mailto:${email}` : undefined,
-        sameAs
-      }
+      { "@type": "WebSite", name: siteMeta.titleSuffix, url: "https://yaroslav-dev-ya-dev.vercel.app", description: siteMeta.description, inLanguage: "en" },
+      { "@type": "Person", name: personal.name, jobTitle: personal.title, description: personal.heroStatement, url: "https://yaroslav-dev-ya-dev.vercel.app", email: email ? `mailto:${email}` : undefined, sameAs }
     ]
   };
 
   return (
-      <html
-          lang="en"
-          className={`${displaySyne.variable} ${displayOutfit.variable} ${displaySpaceGrotesk.variable} ${bodyManrope.variable} ${bodyInter.variable} ${bodySora.variable} ${monoSpace.variable} ${monoJetBrains.variable}`}
-      >
+      <html lang="en" className={`${displaySyne.variable} ${displayOutfit.variable} ${displaySpaceGrotesk.variable} ${bodyManrope.variable} ${bodyInter.variable} ${bodySora.variable} ${monoSpace.variable} ${monoJetBrains.variable}`}>
       <body style={themeVars}>
-      <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+      <GlobalBackground />
+      <SoundEngine />
       <LanguageProvider>
         {children}
       </LanguageProvider>

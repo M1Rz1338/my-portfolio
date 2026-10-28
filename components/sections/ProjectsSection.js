@@ -23,11 +23,7 @@ export default function ProjectsSection() {
   }, [reducedMotion]);
 
   return (
-      <section id="projects" data-section ref={sectionRef} className="relative overflow-hidden py-28 md:py-36">
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="section-ambient absolute inset-0 opacity-60" />
-          <div className="grain-overlay section-ambient absolute inset-0" />
-        </div>
+      <section id="projects" data-section ref={sectionRef} className="relative py-28 md:py-36">
         <div className="section-shell">
           <div className="max-w-4xl">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-silver/70">

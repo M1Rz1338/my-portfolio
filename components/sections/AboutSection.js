@@ -16,7 +16,7 @@ function renderHeadingWords(text) {
 }
 
 export default function AboutSection() {
-  const { content, lang } = useLanguage();
+  const { content } = useLanguage();
   const personal = content.personal;
   const sectionRef = useRef(null);
   const reducedMotion = usePrefersReducedMotion();
@@ -46,7 +46,7 @@ export default function AboutSection() {
         <div className="section-shell relative z-10 grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-silver/70">
-              {lang === "ru" ? "Раздел 02 / Обо мне" : "Section 02 / Identity"}
+              Раздел 02 / Обо мне
             </div>
             <h2 className="display-font text-balance text-[clamp(2rem,4.5vw,4rem)] font-semibold leading-[1.15]">{renderHeadingWords(personal.aboutHeading)}</h2>
             <div className="mt-8 space-y-5">
@@ -58,11 +58,8 @@ export default function AboutSection() {
 
           <div className="lg:col-span-5">
             <div className="identity-panel relative mx-auto mt-2 max-w-[420px]">
-              <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-neon-violet/18 blur-[95px]" />
-              <div className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-neon-cyan/15 blur-[95px]" />
-
               <figure className="about-portrait-frame relative aspect-[2/3] w-full overflow-hidden rounded-[20px] shadow-[0_28px_70px_rgba(2,3,11,0.55)]">
-                <Image src={withBasePath("/yaroslav1.jpg")} alt={`${personal.name} portrait`} fill sizes="(max-width: 1023px) 80vw, 420px" className="object-cover object-center" />
+                <Image src={withBasePath("/yaroslav2.JPEG")} alt={`${personal.name} portrait`} fill sizes="(max-width: 1023px) 80vw, 420px" className="object-cover object-center" />
                 <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(175deg,rgba(8,9,19,0.08),rgba(8,9,19,0.3))]" />
               </figure>
 

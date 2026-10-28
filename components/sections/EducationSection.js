@@ -17,15 +17,12 @@ export default function EducationSection() {
       gsap.timeline({ defaults: { ease: "power3.out" }, scrollTrigger: { trigger: sectionRef.current, start: "top 72%", end: "bottom 35%", toggleActions: "play none none none", once: true } })
           .fromTo(".education-title", { y: 36, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.75 })
           .fromTo(".education-node", { y: 34, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6, stagger: 0.12 }, "-=0.32");
-      gsap.to(".education-ambient", { yPercent: -10, ease: "none", scrollTrigger: { trigger: sectionRef.current, start: "top bottom", end: "bottom top", scrub: 1 } });
     }, sectionRef);
     return () => ctx.revert();
   }, [reducedMotion]);
 
   return (
-      <section id="education" data-section ref={sectionRef} className="relative overflow-hidden py-28 md:py-36">
-        <div className="education-ambient section-ambient pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(55,244,255,0.12),transparent_42%),radial-gradient(circle_at_85%_78%,rgba(159,92,255,0.15),transparent_38%)]" />
-
+      <section id="education" data-section ref={sectionRef} className="relative py-28 md:py-36">
         <div className="section-shell relative z-10">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-silver/70">
             {lang === "ru" ? "Раздел 05 / Обучение" : "Section 05 / Education"}

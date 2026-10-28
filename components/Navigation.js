@@ -5,6 +5,7 @@ import { gsap } from "@/lib/gsap";
 import { sectionVisibility } from "@/data/resumeContent";
 import { useLanguage } from "@/app/LanguageContext";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { withBasePath } from "@/lib/assetPath";
 
 export default function Navigation() {
   const { lang, toggleLanguage, nav } = useLanguage();
@@ -192,34 +193,23 @@ export default function Navigation() {
 
         <header className="fixed left-1/2 top-4 z-[72] w-[calc(100%-1.5rem)] -translate-x-1/2 md:w-[min(900px,95vw)]">
           <nav className="surface-panel relative flex h-14 items-center justify-between rounded-2xl px-5 shadow-card">
-
-            <button
-                aria-label="Scroll to opening"
-                onClick={() => handleJump(items[0]?.id || "hero")}
-                className="text-xs font-medium uppercase tracking-wider text-silver/80 transition hover:text-white"
-            >
+            <button aria-label="Scroll to opening" onClick={() => handleJump(items[0]?.id || "hero")} className="text-xs font-medium uppercase tracking-wider text-silver/80 transition hover:text-white">
               {lang === "ru" ? "Главная" : "Home"}
             </button>
 
             <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-3 lg:flex">
-            <span className="text-xs uppercase tracking-[0.1em] text-silver/60">
-              {lang === "ru" ? "Текущий раздел" : "Current section"}
-            </span>
+              <span className="text-xs uppercase tracking-[0.1em] text-silver/60">{lang === "ru" ? "Текущий раздел" : "Current section"}</span>
               <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-wider text-white">{activeLabel}</span>
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                  onClick={toggleLanguage}
-                  className="flex h-8 items-center justify-center rounded-full border border-neon-cyan/50 bg-neon-cyan/10 px-4 text-xs font-medium uppercase tracking-wider text-neon-cyan transition-colors hover:bg-neon-cyan hover:text-black"
-              >
+              <a href={withBasePath("/cv.pdf")} target="_blank" rel="noreferrer" className="flex h-8 items-center justify-center rounded-full border border-neon-cyan/50 bg-neon-cyan/10 px-4 text-xs font-medium uppercase tracking-wider text-neon-cyan transition-colors hover:bg-neon-cyan hover:text-black">
+                CV
+              </a>
+              <button onClick={toggleLanguage} className="flex h-8 items-center justify-center rounded-full border border-neon-cyan/50 bg-neon-cyan/10 px-4 text-xs font-medium uppercase tracking-wider text-neon-cyan transition-colors hover:bg-neon-cyan hover:text-black">
                 {lang === "ru" ? "EN" : "RU"}
               </button>
-              <button
-                  aria-label="Open menu"
-                  onClick={() => { if (menuOpen) { closeSceneMap(); return; } setDisplaySceneId(activeSection); setMenuOpen(true); }}
-                  className="flex h-8 items-center justify-center rounded-full border border-white/20 bg-white/5 px-4 text-xs font-medium uppercase tracking-wider text-silver/80 transition-colors hover:bg-white/10 hover:text-white"
-              >
+              <button aria-label="Open menu" onClick={() => { if (menuOpen) { closeSceneMap(); return; } setDisplaySceneId(activeSection); setMenuOpen(true); }} className="flex h-8 items-center justify-center rounded-full border border-white/20 bg-white/5 px-4 text-xs font-medium uppercase tracking-wider text-silver/80 transition-colors hover:bg-white/10 hover:text-white">
                 {lang === "ru" ? "Разделы" : "Sections"}
               </button>
             </div>
@@ -236,9 +226,7 @@ export default function Navigation() {
               <div className="mb-8 flex items-center justify-between gap-3">
                 <div>
                   <p className="mono-font text-[10px] uppercase tracking-[0.24em] text-silver/65">{lang === "ru" ? "Навигация" : "Navigation"}</p>
-                  <p className="scene-map-meta display-font mt-2 text-2xl font-semibold text-white md:text-3xl">
-                    {lang === "ru" ? "Разделы сайта" : "Site Sections"}
-                  </p>
+                  <p className="scene-map-meta display-font mt-2 text-2xl font-semibold text-white md:text-3xl">{lang === "ru" ? "Разделы сайта" : "Site Sections"}</p>
                 </div>
                 <button onClick={() => closeSceneMap()} className="scene-map-meta mono-font rounded-full border border-white/25 bg-white/[0.03] px-4 py-1.5 text-[10px] uppercase tracking-[0.22em] text-silver/80 transition hover:border-white/55 hover:text-white">
                   {lang === "ru" ? "Закрыть" : "Close"}

@@ -8,7 +8,7 @@ import { withBasePath } from "@/lib/assetPath";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 export default function HeroSection() {
-  const { content } = useLanguage();
+  const { content, lang } = useLanguage();
   const personal = content.personal;
   const sectionRef = useRef(null);
   const reducedMotion = usePrefersReducedMotion();
@@ -24,49 +24,105 @@ export default function HeroSection() {
         const statement = root.querySelector(".hero-statement");
         const cue = root.querySelector(".hero-scroll-cue");
         const contentEl = root.querySelector(".hero-scene-content");
-        const slowLayer = root.querySelector(".hero-layer-slow");
-        const fastLayers = root.querySelectorAll(".hero-layer-fast");
         const portrait = root.querySelector(".hero-portrait");
-        const portraitShell = root.querySelector(".hero-portrait-shell");
+        const buttons = root.querySelector(".hero-buttons");
 
-        const intro = gsap.timeline({ defaults: { ease: "power3.out" }, scrollTrigger: { trigger: root, start: "top 75%", end: "bottom 40%", toggleActions: "play none none none", once: true } });
-        intro.from(name, { y: 20, autoAlpha: 0, duration: 0.7 }).from(field, { y: 14, autoAlpha: 0, duration: 0.55 }, "-=0.35").fromTo(statement, { y: 18, autoAlpha: 0, filter: "blur(8px)" }, { y: 0, autoAlpha: 1, filter: "blur(0px)", duration: 0.65 }, "-=0.3").fromTo(cue, { y: -6, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45 }, "-=0.15").fromTo(portrait, { x: 20, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.7 }, "-=0.6");
+        const intro = gsap.timeline({
+          defaults: { ease: "power3.out" },
+          scrollTrigger: {
+            trigger: root,
+            start: "top 75%",
+            end: "bottom 40%",
+            toggleActions: "play none none none",
+            once: true
+          }
+        });
 
-        gsap.to(contentEl, { yPercent: -8, ease: "none", scrollTrigger: { trigger: sectionRef.current, start: "top top", end: "bottom top+=20%", scrub: 1 } });
-        gsap.to(slowLayer, { yPercent: 8, ease: "none", scrollTrigger: { trigger: sectionRef.current, start: "top top", end: "bottom top", scrub: 1 } });
-        gsap.to(fastLayers, { yPercent: -10, ease: "none", scrollTrigger: { trigger: sectionRef.current, start: "top top", end: "bottom top", scrub: 1 } });
+        intro
+            .from(name, { y: 20, autoAlpha: 0, duration: 0.7 })
+            .from(field, { y: 14, autoAlpha: 0, duration: 0.55 }, "-=0.35")
+            .fromTo(statement, { y: 18, autoAlpha: 0, filter: "blur(8px)" }, { y: 0, autoAlpha: 1, filter: "blur(0px)", duration: 0.65 }, "-=0.3")
+            .fromTo(buttons, { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5 }, "-=0.2")
+            .fromTo(cue, { y: -6, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45 }, "-=0.15")
+            .fromTo(portrait, { x: 20, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.7 }, "-=0.6");
+
+        gsap.to(contentEl, {
+          yPercent: -8,
+          ease: "none",
+          scrollTrigger: { trigger: sectionRef.current, start: "top top", end: "bottom top+=20%", scrub: 1 }
+        });
       }, sectionRef);
       cleanup = () => ctx.revert();
     };
 
     const onLoaderDone = () => initHeroAnimations();
-    if (window.__cv2LoaderDone) { initHeroAnimations(); } else { window.addEventListener("cv2:loader-done", onLoaderDone, { once: true }); }
-    return () => { window.removeEventListener("cv2:loader-done", onLoaderDone); cleanup(); };
+    if (window.__cv2LoaderDone) {
+      initHeroAnimations();
+    } else {
+      window.addEventListener("cv2:loader-done", onLoaderDone, { once: true });
+    }
+
+    return () => {
+      window.removeEventListener("cv2:loader-done", onLoaderDone);
+      cleanup();
+    };
   }, [reducedMotion]);
 
   return (
-      <section id="hero" data-section ref={sectionRef} className="hero-backdrop relative flex min-h-[100svh] items-center overflow-hidden pb-16 pt-32 md:pb-20 md:pt-36">
-        <div className="hero-layer-slow section-ambient absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(159,92,255,0.22),transparent_42%),radial-gradient(circle_at_80%_35%,rgba(55,244,255,0.12),transparent_44%)]" />
-        <div className="hero-layer-fast absolute right-[8%] top-[14%] h-52 w-52 rounded-full bg-neon-magenta/22 blur-[110px]" />
-        <div className="hero-layer-fast absolute left-[8%] top-[42%] h-52 w-52 rounded-full bg-neon-cyan/18 blur-[120px]" />
-
+      <section
+          id="hero"
+          data-section
+          ref={sectionRef}
+          className="relative flex min-h-[100svh] items-center overflow-hidden pb-16 pt-32 md:pb-20 md:pt-36"
+      >
         <div className="section-shell hero-scene-content relative z-10 w-full">
           <div className="grid items-center gap-8 lg:grid-cols-12">
             <div className="max-w-[820px] lg:col-span-7">
-              <h1 className="hero-name display-font text-balance text-[clamp(2.1rem,5.4vw,4.9rem)] font-semibold leading-[1.15] text-white">{personal.name}</h1>
-              <p className="hero-field mono-font mt-3 text-xs uppercase tracking-[0.2em] text-neon-cyan">{personal.title}</p>
-              <p className="hero-statement text-balance mt-4 max-w-lg text-sm leading-relaxed text-silver/80 md:text-base">{personal.heroStatement}</p>
+              <h1 className="hero-name display-font text-balance text-[clamp(2.1rem,5.4vw,4.9rem)] font-semibold leading-[1.15] text-white">
+                {personal.name}
+              </h1>
+              <p className="hero-field mono-font mt-3 text-xs uppercase tracking-[0.2em] text-neon-cyan">
+                {personal.title}
+              </p>
+              <p className="hero-statement text-balance mt-4 max-w-lg text-sm leading-relaxed text-silver/80 md:text-base">
+                {personal.heroStatement}
+              </p>
+
+              <div className="hero-buttons mt-8 flex flex-wrap items-center gap-4">
+                <a
+                    href={withBasePath("/cv.pdf")}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group inline-flex h-10 items-center justify-center gap-2 rounded-full border border-neon-cyan/50 bg-neon-cyan/10 px-6 text-sm font-medium text-neon-cyan transition-all hover:bg-neon-cyan hover:text-black"
+                >
+                  {lang === "ru" ? "Скачать CV" : "Download CV"}
+                  <svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                  </svg>
+                </a>
+              </div>
             </div>
 
             <div className="hero-portrait relative mx-auto hidden w-full max-w-[360px] lg:col-span-5 lg:block xl:max-w-[400px]">
               <div className="hero-portrait-shell relative mx-auto aspect-[3/4] w-full overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-neon-cyan/10">
-                <Image src={withBasePath("/yaroslav2.JPEG")} alt={`${personal.name} portrait`} fill sizes="(max-width: 1279px) 360px, 400px" className="object-cover" priority />
+                <Image
+                    src={withBasePath("/yaroslav2.JPEG")}
+                    alt={`${personal.name} portrait`}
+                    fill
+                    sizes="(max-width: 1279px) 360px, 400px"
+                    className="object-cover"
+                    priority
+                />
               </div>
             </div>
           </div>
         </div>
 
-        <button aria-label="Scroll to about section" onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth", block: "start" })} className="hero-scroll-cue absolute bottom-4 left-1/2 z-20 -translate-x-1/2 md:bottom-6">
+        <button
+            aria-label="Scroll to about section"
+            onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth", block: "start" })}
+            className="hero-scroll-cue absolute bottom-4 left-1/2 z-20 -translate-x-1/2 md:bottom-6"
+        >
         <span className="mono-font inline-flex flex-col items-center text-[11px] uppercase tracking-[0.24em] text-silver/70">
           Scroll
           <span className="mt-2 h-8 w-px animate-pulseCue bg-gradient-to-b from-silver/70 to-transparent" />
