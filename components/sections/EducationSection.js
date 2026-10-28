@@ -22,9 +22,9 @@ export default function EducationSection() {
   }, [reducedMotion]);
 
   return (
-      <section id="education" data-section ref={sectionRef} className="relative py-28 md:py-36">
+      <section id="education" data-section ref={sectionRef} className="relative overflow-hidden py-28 md:py-36">
         <div className="section-shell relative z-10">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-silver/70">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-silver/70">
             {lang === "ru" ? "Раздел 05 / Обучение" : "Section 05 / Education"}
           </div>
           <h2 className="education-title display-font max-w-4xl text-balance text-[clamp(2rem,4.8vw,4.2rem)] font-semibold leading-[1.15]">{lang === "ru" ? "Профессиональное обучение" : "Professional Education"}</h2>

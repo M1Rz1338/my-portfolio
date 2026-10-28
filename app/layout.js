@@ -6,14 +6,14 @@ import GlobalBackground from "@/components/GlobalBackground";
 import SoundEngine from "@/components/SoundEngine";
 import "./globals.css";
 
-const displaySyne = Syne({ subsets: ["latin"], weight: ["500", "600", "700", "800"], variable: "--font-display-syne" });
-const displayOutfit = Outfit({ subsets: ["latin"], weight: ["500", "600", "700", "800"], variable: "--font-display-outfit" });
-const displaySpaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-display-space-grotesk" });
-const bodyManrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-body-manrope" });
-const bodyInter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-body-inter" });
-const bodySora = Sora({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-body-sora" });
-const monoSpace = Space_Mono({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-mono-space" });
-const monoJetBrains = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-mono-jetbrains" });
+const displaySyne = Syne({ subsets: ["latin", "cyrillic"], weight: ["500", "600", "700", "800"], variable: "--font-display-syne" });
+const displayOutfit = Outfit({ subsets: ["latin", "cyrillic"], weight: ["500", "600", "700", "800"], variable: "--font-display-outfit" });
+const displaySpaceGrotesk = Space_Grotesk({ subsets: ["latin", "cyrillic"], weight: ["500", "600", "700"], variable: "--font-display-space-grotesk" });
+const bodyManrope = Manrope({ subsets: ["latin", "cyrillic"], weight: ["400", "500", "600", "700", "800"], variable: "--font-body-manrope" });
+const bodyInter = Inter({ subsets: ["latin", "cyrillic"], weight: ["400", "500", "600", "700", "800"], variable: "--font-body-inter" });
+const bodySora = Sora({ subsets: ["latin", "cyrillic"], weight: ["400", "500", "600", "700"], variable: "--font-body-sora" });
+const monoSpace = Space_Mono({ subsets: ["latin", "cyrillic"], weight: ["400", "700"], variable: "--font-mono-space" });
+const monoJetBrains = JetBrains_Mono({ subsets: ["latin", "cyrillic"], weight: ["400", "700"], variable: "--font-mono-jetbrains" });
 
 export const metadata = {
   metadataBase: new URL("https://yaroslav-dev-ya-dev.vercel.app"),

@@ -26,10 +26,10 @@ export default function ProjectsSection() {
       <section id="projects" data-section ref={sectionRef} className="relative py-28 md:py-36">
         <div className="section-shell">
           <div className="max-w-4xl">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-silver/70">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-silver/70">
               {lang === "ru" ? "Раздел 06 / Проекты" : "Section 06 / Projects"}
             </div>
-            <h2 className="projects-title display-font text-balance text-[clamp(2.1rem,5vw,4.8rem)] font-semibold leading-[1.15]">{lang === "ru" ? "Практический опыт в backend-разработке" : "Practical experience in backend development"}</h2>
+            <h2 className="projects-title display-font text-balance text-[clamp(2rem,4.8vw,4.2rem)] font-semibold leading-[1.15]">{lang === "ru" ? "Практический опыт в backend-разработке" : "Practical experience in backend development"}</h2>
           </div>
 
           <article className="project-stage mt-14 grid items-center gap-8 lg:grid-cols-12 lg:gap-10">

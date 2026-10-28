@@ -47,8 +47,17 @@ export default function ContactSection() {
   return (
       <section id="contact" data-section ref={sectionRef} className="relative overflow-hidden pb-20 pt-28 md:pb-24 md:pt-36">
         <div className="section-shell relative z-10">
-          <p className="label-chip inline-flex items-center leading-none">{lang === "ru" ? "Раздел 07 / Контакты" : "Section 07 / Contact"}</p>
-          <h2 className="contact-title display-font text-balance mt-7 max-w-4xl py-2 text-[clamp(2rem,4.8vw,4.2rem)] font-semibold leading-[1.25] text-white">{contact.headline}</h2>
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-silver/70">
+            {lang === "ru" ? "Раздел 07 / Контакты" : "Section 07 / Contact"}
+          </div>
+
+          <h2
+              className="contact-title display-font mt-7 max-w-5xl font-semibold leading-[1.15] text-white"
+              style={{ fontSize: 'clamp(2rem, 4.8vw, 4.2rem)' }}
+          >
+            {contact.headline}
+          </h2>
+
           <p className="contact-copy mt-6 max-w-2xl text-base leading-relaxed text-silver/80 md:text-lg">{contact.statement}</p>
 
           <div className="mt-10 grid gap-4 md:grid-cols-3">

@@ -248,7 +248,7 @@ export default function Navigation() {
                               <p className={`mono-font text-[10px] uppercase tracking-[0.2em] ${isActive ? "text-neon-cyan" : "text-silver/55"}`}>{lang === "ru" ? "Раздел" : "Section"}</p>
                               <p className={`mt-1 text-sm uppercase tracking-[0.18em] md:text-base ${isActive ? "text-white" : "text-silver/78 group-hover:text-white"}`}>{item.label}</p>
                             </div>
-                            <span className={`h-px w-14 bg-gradient-to-r ${isActive ? "from-neon-cyan via-neon-violet to-neon-magenta" : "from-white/0 to-white/20"}`} />
+                            <span className={`h-px w-14 ${isActive ? "bg-neon-cyan" : "bg-white/20"}`} />
                           </button>
                       );
                     })}

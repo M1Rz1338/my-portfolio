@@ -25,7 +25,7 @@ export default function SkillsSection() {
   return (
       <section id="skills" data-section ref={sectionRef} className="relative py-28 md:py-36">
         <div className="section-shell relative z-10">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-silver/70">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-silver/70">
             {lang === "ru" ? "Раздел 04 / Инструменты" : "Section 04 / Toolkit"}
           </div>
           <h2 className="skills-title display-font text-balance text-[clamp(2rem,4.8vw,4.2rem)] font-semibold leading-[1.15]">{lang === "ru" ? "Мой стек технологий" : "My technical toolkit"}</h2>
