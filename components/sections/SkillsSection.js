@@ -36,7 +36,12 @@ export default function SkillsSection() {
                   <h3 className="display-font text-xl font-semibold leading-tight text-white">{group.category}</h3>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {group.items.map((item) => (
-                        <span key={item} className="skill-pill inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-sm text-silver/80">{item}</span>
+                        <span
+                            key={item}
+                            className="skill-pill inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-sm text-silver/80 transition-all duration-300 hover:border-neon-cyan/40 hover:bg-neon-cyan/5 hover:text-white"
+                        >
+                    {item}
+                  </span>
                     ))}
                   </div>
                 </div>

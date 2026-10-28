@@ -4,6 +4,7 @@ import themeConfig from "@/data/themeConfig.json";
 import { LanguageProvider } from "./LanguageContext";
 import GlobalBackground from "@/components/GlobalBackground";
 import SoundEngine from "@/components/SoundEngine";
+import ScrollToTop from "@/components/ScrollToTop";
 import "./globals.css";
 
 const displaySyne = Syne({ subsets: ["latin", "cyrillic"], weight: ["500", "600", "700", "800"], variable: "--font-display-syne" });
@@ -106,6 +107,7 @@ export default function RootLayout({ children }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <GlobalBackground />
       <SoundEngine />
+      <ScrollToTop />
       <LanguageProvider>
         {children}
       </LanguageProvider>

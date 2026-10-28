@@ -11,6 +11,7 @@ export default function HeroSection() {
   const { content, lang } = useLanguage();
   const personal = content.personal;
   const sectionRef = useRef(null);
+  const cvBtnRef = useRef(null);
   const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
@@ -68,6 +69,51 @@ export default function HeroSection() {
     };
   }, [reducedMotion]);
 
+  useEffect(() => {
+    const btn = cvBtnRef.current;
+    if (!btn || reducedMotion) return;
+
+    gsap.set(btn, { transformStyle: "preserve-3d", transformPerspective: 1000 });
+
+    const move = (event) => {
+      const rect = btn.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -12;
+      const rotateY = ((x - centerX) / centerX) * 12;
+
+      gsap.to(btn, {
+        rotateX,
+        rotateY,
+        duration: 0.4,
+        ease: "power2.out"
+      });
+
+      btn.style.setProperty("--mouse-x", `${x}px`);
+      btn.style.setProperty("--mouse-y", `${y}px`);
+    };
+
+    const leave = () => {
+      gsap.to(btn, {
+        rotateX: 0,
+        rotateY: 0,
+        duration: 0.6,
+        ease: "power3.out"
+      });
+    };
+
+    btn.addEventListener("mousemove", move);
+    btn.addEventListener("mouseleave", leave);
+
+    return () => {
+      btn.removeEventListener("mousemove", move);
+      btn.removeEventListener("mouseleave", leave);
+    };
+  }, [reducedMotion]);
+
   return (
       <section
           id="hero"
@@ -88,17 +134,28 @@ export default function HeroSection() {
                 {personal.heroStatement}
               </p>
 
-              <div className="hero-buttons mt-8 flex flex-wrap items-center gap-4">
+              <div className="hero-buttons mt-8 flex flex-wrap items-center gap-4 perspective-[1000px]">
                 <a
+                    ref={cvBtnRef}
                     href={withBasePath("/cv.pdf")}
                     target="_blank"
                     rel="noreferrer"
-                    className="group inline-flex h-10 items-center justify-center gap-2 rounded-full border border-neon-cyan/50 bg-neon-cyan/10 px-6 text-sm font-medium text-neon-cyan transition-all hover:bg-neon-cyan hover:text-black"
+                    className="group/btn relative inline-flex h-11 min-w-[180px] items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white/5 backdrop-blur-md px-6 text-sm font-medium text-white transition-all duration-300 hover:border-neon-cyan/50 hover:shadow-[0_0_15px_rgba(55,244,255,0.1)]"
                 >
-                  {lang === "ru" ? "Скачать CV" : "Download CV"}
-                  <svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                  </svg>
+                  <div
+                      className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-300 group-hover/btn:opacity-100"
+                      style={{
+                        background: `radial-gradient(100px circle at var(--mouse-x) var(--mouse-y), rgba(55, 244, 255, 0.15), transparent 40%)`
+                      }}
+                  />
+                  <div className="relative z-10 flex items-center justify-center gap-2">
+                  <span>
+                    {lang === "ru" ? "Скачать CV" : "Download CV"}
+                  </span>
+                    <svg className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                  </div>
                 </a>
               </div>
             </div>

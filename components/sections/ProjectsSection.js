@@ -9,6 +9,7 @@ export default function ProjectsSection() {
   const { content, lang } = useLanguage();
   const project = content.projects[0];
   const sectionRef = useRef(null);
+  const githubBtnRef = useRef(null);
   const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
@@ -19,6 +20,50 @@ export default function ProjectsSection() {
           .fromTo(".project-stage", { y: 26, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.7 }, "-=0.3")
           .fromTo(".project-stage-item", { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, stagger: 0.05, duration: 0.4 }, "-=0.24");
     }, sectionRef);
+
+    const btn = githubBtnRef.current;
+    if (btn) {
+      gsap.set(btn, { transformStyle: "preserve-3d", transformPerspective: 1000 });
+
+      const move = (event) => {
+        const rect = btn.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -12;
+        const rotateY = ((x - centerX) / centerX) * 12;
+
+        gsap.to(btn, {
+          rotateX,
+          rotateY,
+          duration: 0.4,
+          ease: "power2.out"
+        });
+
+        btn.style.setProperty("--mouse-x", `${x}px`);
+        btn.style.setProperty("--mouse-y", `${y}px`);
+      };
+
+      const leave = () => {
+        gsap.to(btn, {
+          rotateX: 0,
+          rotateY: 0,
+          duration: 0.6,
+          ease: "power3.out"
+        });
+      };
+
+      btn.addEventListener("mousemove", move);
+      btn.addEventListener("mouseleave", leave);
+      return () => {
+        btn.removeEventListener("mousemove", move);
+        btn.removeEventListener("mouseleave", leave);
+        ctx.revert();
+      };
+    }
+
     return () => ctx.revert();
   }, [reducedMotion]);
 
@@ -50,10 +95,31 @@ export default function ProjectsSection() {
                     <span key={tag} className="mono-font border-b border-white/25 pb-1 text-[10px] uppercase tracking-[0.18em] text-silver/75">{tag}</span>
                 ))}
               </div>
-              <div className="project-stage-item flex flex-wrap items-center gap-3">
-                <a href="https://github.com/M1Rz1338" target="_blank" rel="noreferrer" className="magnetic-button rounded-full border border-white/35 px-5 py-2 text-sm font-medium text-white transition hover:bg-white hover:text-black">{project.cta}</a>
+
+              <div className="project-stage-item flex flex-wrap items-center gap-3 perspective-[1000px]">
+                <a
+                    ref={githubBtnRef}
+                    href="https://github.com/M1Rz1338"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group/btn relative inline-flex h-11 min-w-[220px] items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white/5 backdrop-blur-md px-8 text-sm font-medium text-white transition-all duration-300 hover:border-neon-cyan/50 hover:shadow-[0_0_15px_rgba(55,244,255,0.1)] font-sans"
+                >
+                  <div
+                      className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-300 group-hover/btn:opacity-100"
+                      style={{
+                        background: `radial-gradient(100px circle at var(--mouse-x) var(--mouse-y), rgba(55, 244, 255, 0.15), transparent 40%)`
+                      }}
+                  />
+                  <span className="relative z-10 transition-transform duration-300 group-hover/btn:-translate-x-2">
+                  {project.cta}
+                </span>
+                  <svg className="absolute right-6 z-10 h-4 w-4 opacity-0 -translate-x-2 transition-all duration-300 group-hover/btn:translate-x-0 group-hover/btn:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
               </div>
             </div>
+
             <div className="lg:col-span-6">
               <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0f]">
                 <div className="flex items-center gap-2 border-b border-white/10 bg-white/5 px-4 py-3">
