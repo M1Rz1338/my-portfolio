@@ -163,7 +163,7 @@ export default function HeroSection() {
             <div className="hero-portrait relative mx-auto hidden w-full max-w-[360px] lg:col-span-5 lg:block xl:max-w-[400px]">
               <div className="hero-portrait-shell relative mx-auto aspect-[3/4] w-full overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-neon-cyan/10">
                 <Image
-                    src={withBasePath("/yaroslav2.JPEG")}
+                    src={withBasePath("/yaroslav2.jpg")}
                     alt={`${personal.name} portrait`}
                     fill
                     sizes="(max-width: 1279px) 360px, 400px"
