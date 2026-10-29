@@ -5,6 +5,7 @@ import { LanguageProvider } from "./LanguageContext";
 import GlobalBackground from "@/components/GlobalBackground";
 import SoundEngine from "@/components/SoundEngine";
 import ScrollToTop from "@/components/ScrollToTop";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const displaySyne = Syne({ subsets: ["latin", "cyrillic"], weight: ["500", "600", "700", "800"], variable: "--font-display-syne" });
@@ -111,6 +112,7 @@ export default function RootLayout({ children }) {
       <LanguageProvider>
         {children}
       </LanguageProvider>
+      <Analytics />
       </body>
       </html>
   );
