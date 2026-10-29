@@ -29,9 +29,9 @@ export const siteMeta = {
   titleSuffix: "Junior Java Developer",
   footerTagline: "Java Backend Developer",
   description: "Junior Java Developer with a background in Law and Cybersecurity.",
-  siteUrl: "https://example.com",
+  siteUrl: "https://yaroslav-dev-ya-dev.vercel.app",
   locale: "en_US",
-  ogImage: "/og-profile.jpg",
+  ogImage: "/og-image.jpg",
   keywords: ["java developer", "spring boot", "backend", "junior", "cybersecurity"],
   twitterHandle: "",
   themeColor: "#06050d"
@@ -70,8 +70,8 @@ export const content = {
     ],
     skills: [
       { category: "Backend", accent: "violet", items: ["Java Core", "Spring Boot", "Spring MVC", "Spring Security", "Spring Data", "REST API"] },
-      { category: "Базы данных", accent: "cyan", items: ["PostgreSQL", "MySQL", "Hibernate / JPA", "SQL"] },
-      { category: "Инструменты", accent: "magenta", items: ["Git", "Maven", "ООП", "Java Collections", "IntelliJ IDEA"] },
+      { category: "Базы данных", accent: "cyan", items: ["PostgreSQL", "MySQL", "SQL", "Hibernate / JPA"] },
+      { category: "Инструменты", accent: "magenta", items: ["Git", "Maven", "Docker", "Swagger", "IntelliJ IDEA"] },
       { category: "Сети и инфраструктура", accent: "amber", items: ["Настройка сетей", "Сопровождение инфраструктуры", "Защита данных", "Аттестация систем"] }
     ],
     education: [
@@ -157,8 +157,8 @@ export const content = {
     ],
     skills: [
       { category: "Backend", accent: "violet", items: ["Java Core", "Spring Boot", "Spring MVC", "Spring Security", "Spring Data", "REST API"] },
-      { category: "Databases", accent: "cyan", items: ["PostgreSQL", "MySQL", "Hibernate / JPA", "SQL"] },
-      { category: "Tools", accent: "magenta", items: ["Git", "Maven", "OOP", "Java Collections", "IntelliJ IDEA"] },
+      { category: "Databases", accent: "cyan", items: ["PostgreSQL", "MySQL", "SQL", "Hibernate / JPA"] },
+      { category: "Tools", accent: "magenta", items: ["Git", "Maven", "Docker", "Swagger", "IntelliJ IDEA"] },
       { category: "Networks & Infrastructure", accent: "amber", items: ["Network Setup", "Infrastructure Support", "Data Protection", "System Certification"] }
     ],
     education: [
