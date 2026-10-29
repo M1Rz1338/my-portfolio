@@ -45,8 +45,13 @@ export default function AboutSection() {
       <section id="about" data-section ref={sectionRef} className="relative py-28 md:py-36">
         <div className="section-shell relative z-10 grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <p className="label-chip mb-6">{lang === "ru" ? "Раздел 02 / Обо мне" : "Section 02 / Identity"}</p>
+
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[10px] font-sans font-medium uppercase tracking-[0.2em] text-silver/70">
+              {lang === "ru" ? "Раздел 02 / Обо мне" : "Section 02 / Identity"}
+            </div>
+
             <h2 className="display-font text-balance text-[clamp(2rem,4.5vw,4rem)] font-semibold leading-[1.15]">{renderHeadingWords(personal.aboutHeading)}</h2>
+
             <div className="mt-8 space-y-5">
               {personal.aboutParagraphs.map((paragraph) => (
                   <p key={paragraph.slice(0, 22)} className="about-copy-line max-w-2xl text-base leading-relaxed text-silver/80 md:text-lg">{paragraph}</p>
